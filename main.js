@@ -162,3 +162,203 @@ let markup = `
 `;
 
 document.write(markup);
+
+//2\9\2023
+
+/*
+--Arithnetic Operators
+  + Addition
+  - subtraction
+  * Multiplication
+  / Division
+  ** Exponentiation (ES7)
+  % Modulus (Division Remainder)
+  ++ Increment [ post / pre] post => print and then collect
+  -- Decrement [ post /pre ] pre => 
+*/
+
+console.log(10 + 20);
+console.log(10 + "osama");
+
+console.log(10 - 20);
+console.log(10 - "osama"); //Nan
+console.log(typeof NaN);
+
+console.log(10 * 20);
+console.log(10 * -20);
+
+console.log(20 / 5);
+console.log(20 / 3);
+
+console.log(2 ** 4); //الاس
+console.log(2 * 2 * 2 * 2);
+
+console.log(10 % 2); //باقي الاقسمه
+console.log(11 % 2); //احذف الزياده عشان يكون العدد صحيح
+
+num = 1;
+num++;
+console.log(num); //ex.post
+
+num = 1;
+++num;
+console.log(num); // ex.pre
+
+/*
+  + Unary Plus [Return Number If Its Not Number]
+  - Unary Negation [ Return Number If Its Not Number + Negates It]
+  */
+
+console.log(+100);
+console.log(+"100");
+console.log(+"-100");
+console.log(+"osama");
+console.log(+0xff);
+console.log(+null);
+console.log(+false);
+console.log(+true);
+
+console.log(-100);
+console.log(-"100");
+console.log(-"-100");
+console.log(-"osama");
+console.log(-0xff);
+console.log(-null);
+console.log(-false);
+console.log(-true);
+
+console.log(Number("100")); //unary is more easy
+
+/*
+  Type coercion (Type Casting)
+*/
+
+let h = "10";
+let i = 20;
+let j = true;
+
+console.log(+h + i);
+console.log(h - i);
+console.log("" - 2);
+console.log(true - false);
+console.log(j + i);
+console.log(h + i + j);
+console.log(+h + i + j);
+
+/*
+  Assignment Operators
+*/
+
+let k = 10;
+
+k = k + 20;
+
+k = k + 70;
+
+k += 100; //k = K + 100
+
+k -= 50; // k = k - 50
+
+k /= 50; // k = k / 50
+
+console.log(k);
+
+// challange 1* /
+
+let aa = 10;
+let bb = "20";
+let cc = 80;
+
+console.log(++aa + +bb++ + +cc++ - +aa++);
+ /*
+          [++aa] [+] [+bb++]  [+cc++] [- ]  [+aa++]
+[++aa]
+   value:11
+   Eplain: pre icrement
+[+]
+  Eplain: add operator
+[+bb++]
+   value:20
+   Eplain:postincrement , unary plus 
+[+cc++]
+value:80
+   Eplain:postincerement , unary plus
+[+aa++]
+   value:11
+   Eplain:postincerement , unary plus
+[- ]  
+    Eplain:minus
+*/
+
+console.log("update😒");
+console.log("aa:", aa); // Output: 12
+console.log("bb:", bb); // Output: 21
+console.log("cc:", cc); // Output: 81
+
+console.log(++aa + -bb + +cc++ - -aa++ + +aa);
+/*
+[++aa]
+  value:13
+  Explain:pretincrement
+[+]
+  Explain:addition
+[-bb]
+  value:-21
+  Explain:Unary Negation
+[+cc++]
+  value:81
+  Explain:postincerement , unary plus
+[-]
+  Explain: minus
+[-aa++]
+  value:-13
+  Explain:postincerement , Unary Negation
+  update aa = 14 🧐
+[+aa]
+  value:14
+  Explain:unary plus
+*/
+
+console.log("update😒");
+console.log("aa:", aa); // Output: 14
+console.log("bb:", bb); // Output: 21
+console.log("cc:", cc); // Output: 82
+
+console.log(--cc + +bb + --aa * +bb++ - +bb * aa + --aa - +true);
+console.log(81 + 21 + 13 * 21 - 22 * 13 + 12 - 1); //😎
+/*
+[--c]
+  value:81
+  Explain:preDecrement
+[+]
+  Expain:addition
+[+bb]
+  value:21 
+  Explain:Unary plus
+[--aa]
+  value:13
+  Explain:preDecrement
+  update aa = 13
+[+bb++]
+  value:21
+  Explain:postincrement , Unary plus
+  update bb =22
+[+bb ]
+  value:21
+  Explain:unary plus
+[--aa]
+value:12
+  Explain:postdecriment
+  update aa =12
++true
+  value:1
+  Explain:unaryplus
+*/
+
+let dd = "-100";
+let ee = "20";
+let ff = 30;
+let gg = true;
+
+console.log(-dd * ee); // 2000
+console.log(-dd +  ++ee * ++gg + ++ff)
