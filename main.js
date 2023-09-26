@@ -570,3 +570,287 @@ console.log(
     a3.substring(1, a3.length - 1).toUpperCase() +
     a3.slice(-1).toLowerCase()
 ); // eLZERO WEB SCHOOl
+
+//16/9/2023
+
+/*
+comparison Operators مقارنه
+  == Equal
+  !=Not Equal
+
+  === Identical
+  !== Not Identical
+
+  > Larger Than
+  >= Larger Than Or Equal
+
+  < Smaller Than
+  <= Smaller than Or Equal
+*/
+
+console.log(10 == "10"); // Compare Value Only
+console.log(-10 == "-10");
+console.log(10 != "10");
+
+console.log(10 === "10"); // Compare Value + Type
+console.log(10 !== "10"); // Compare Value + Type
+
+console.log(10 > 20);
+console.log(10 > 10);
+console.log(10 >= 10);
+
+console.log("osama" === "Ahmed");
+console.log(typeof "osama" === typeof "Ahmed");
+
+/*
+Logical Operators
+  ! Not
+  &&& And
+  || Or
+*/
+
+console.log(true);
+console.log(!true);
+
+console.log(!(10 == "10"));
+
+console.log(10 == "10" && 10 > 8 && 10 > 50);
+
+console.log(10 == "10" || 10 > 8 || 10 > 50);
+
+/*
+Control flow
+  if
+  elsa if
+  elsa
+  if (condition){
+    // Block of code
+  }
+*/
+
+let price = 100;
+let discount = true;
+let discountAmount = 30;
+let country = "KAk";
+let student = true;
+
+if (discount === false) {
+  price -= discountAmount; //Price = Price - discountAmount
+} else if (country === "Egypt") {
+  if (student === true) {
+    //  Nexted If
+    price -= discountAmount + 30;
+  } else {
+    //   Nexted If
+    price -= discountAmount + 10;
+  }
+} else if (country === "japan") {
+  price += 50;
+} else {
+  price -= 10;
+}
+console.log(price);
+
+/*
+  Condition (Teranry) Operator
+*/
+
+let theName1 = "shaimaa";
+let theGender = "female";
+let theAge = "100";
+
+if (theGender === "male") {
+  console.log("Mr");
+} else {
+  console.log("Mrs");
+}
+
+// condition ? If True : If False
+
+theGender === "male" ? console.log("Mr") : console.log("Mrs");
+
+let result = theGender === "male" ? "Mr" : "Mrs";
+
+document.write(result + "\n");
+
+console.log(theGender === "male" ? "Mr" : "Mrs");
+
+document.write("<br/>");
+
+document.write(`Hello ${theGender === "male" ? "Mr" : "Mrs"} ${theName1}`);
+
+theAge < 20
+  ? console.log(20)
+  : theAge > 20 && theAge < 60
+  ? console.log("20 to 60")
+  : theAge > 60
+  ? console.log("Larger than 60")
+  : console.log("Unknown🙄");
+
+/*
+Logical Or ||
+    Null + Undefiend + Any falsy Value
+  Nullish Coalescing Operator ??
+    Null + Undefined
+*/
+
+console.log(Boolean(100));
+console.log(Boolean(-100));
+console.log(Boolean(0));
+console.log(Boolean(""));
+console.log(Boolean(null));
+
+// let price1 = null;
+// let price1 = 0;
+// let price1 = false;
+//let price1; Undefiend
+let price1 = 0;
+
+console.log(`The Price Is ${price1 || 200}`);
+console.log(`The Price Is ${price1 ?? 200}`); // repect false Value like 0
+
+//Condition Met====================================================================================================================
+let st = "Elzero Web School";
+
+if (st.charAt(st.indexOf("W")).toLowerCase() === "w") {
+  console.log("Good");
+}
+
+if (st !== "string") {
+  console.log("Good");
+}
+
+if (typeof st.length === "number") {
+  console.log("Good");
+}
+
+if (st.substring(0, 6).repeat(2) === "ElzeroElzero") {
+  console.log("Good");
+}
+
+if ((st.length + st.length).toString() === "34") {
+  console.log("Good");
+}
+
+/*
+  Switch Statement
+  Switch (expression){
+    Case 1 :
+      // Code Block
+      break;
+    Case 2 :
+      // Code Block
+    Default:
+      // Code Block
+  }
+    Default Ordering
+    Multiple Match
+    ===
+*/
+
+let day = 10;
+
+switch (day) {
+  default:
+    console.log("Unknown Day");
+    break;
+  case 0:
+    console.log("Saturday");
+    break;
+  case 1:
+    console.log("Sunday");
+    break;
+  case 2:
+  case 3:
+    console.log("Monday");
+    break;
+}
+
+//challange Switch Statement If Condition
+
+//task 1==================================
+let job = "Manager";
+let salary = 0;
+
+if (job === "Manager") {
+  salary = 8000;
+} else if (job === "IT" || job === "Support") {
+  salary = 6000;
+} else if (job === "Developer" || job === "Designer") {
+  salary = 7000;
+} else {
+  salary = 4000;
+}
+
+switch (job) {
+  case "Manager":
+    salary = 8000;
+    console.log(salary);
+    break;
+  case "IT":
+  case "Support":
+    salary = 6000;
+    console.log((salary = 6000));
+    break;
+  case "Developer":
+  case "Designer":
+    salary = 7000;
+    console.log((salary = 7000));
+    break;
+  default:
+    salary = 4000;
+    console.log((salary = 4000));
+    break;
+}
+
+//task 2=================================
+
+let holidays = 4;
+let money = 0;
+
+switch (holidays) {
+  case 0:
+    money = 5000;
+    console.log(`My Money is ${money}`);
+    break;
+  case 1:
+  case 2:
+    money = 3000;
+    console.log(`My Money is ${money}`);
+    break;
+  case 3:
+    money = 2000;
+    console.log(`My Money is ${money}`);
+    break;
+  case 4:
+    money = 1000;
+    console.log(`My Money is ${money}`);
+    break;
+  case 5:
+    money = 0;
+    console.log(`My Money is ${money}`);
+    break;
+  default:
+    money = 0;
+    console.log(`My Money is ${money}`);
+}
+
+if (holidays === 0) {
+  money = 5000;
+  console.log(`My Money is ${money}`);
+} else if (holidays === 1 || holidays === 2) {
+  money = 3000;
+  console.log(`My Money is ${money}`);
+} else if ( holidays === 3){
+  money = 2000;
+    console.log(`My Money is ${money}`);
+}else if ( holidays === 4){
+  money = 1000;
+    console.log(`My Money is ${money}`);
+}else if ( holidays === 5){
+  money = 0;
+  console.log(`My Money is ${money}`);
+}else {
+  money = 0;
+    console.log(`My Money is ${money}`);
+}
