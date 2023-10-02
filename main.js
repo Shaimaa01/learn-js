@@ -841,16 +841,207 @@ if (holidays === 0) {
 } else if (holidays === 1 || holidays === 2) {
   money = 3000;
   console.log(`My Money is ${money}`);
-} else if ( holidays === 3){
+} else if (holidays === 3) {
   money = 2000;
-    console.log(`My Money is ${money}`);
-}else if ( holidays === 4){
+  console.log(`My Money is ${money}`);
+} else if (holidays === 4) {
   money = 1000;
-    console.log(`My Money is ${money}`);
-}else if ( holidays === 5){
+  console.log(`My Money is ${money}`);
+} else if (holidays === 5) {
   money = 0;
   console.log(`My Money is ${money}`);
-}else {
+} else {
   money = 0;
-    console.log(`My Money is ${money}`);
+  console.log(`My Money is ${money}`);
 }
+
+/*
+  Arrays
+    creat Arrays [Two Methods]  new Array() + []
+    Access Arrays Elements
+    Nested Arrays
+    Change Arrays Elements
+    check For Array Array.isArray(arr);
+*/
+let myFriends = ["Ahmed", "osama", "saied", ["maro", "tailor"]];
+console.log(`Hello ${myFriends[0]}`);
+console.log(`Hello ${myFriends[2]}`);
+console.log(`Hello ${myFriends[1][2]}`);
+console.log(`Welcom ${myFriends[3][0][0]}`);
+
+console.log(myFriends);
+myFriends[1] = "shaimaa"; //change array
+console.log(myFriends);
+myFriends[3] = "molly";
+console.log(myFriends);
+
+console.log(typeof myFriends);
+console.log(Array.isArray(myFriends));
+
+/*
+  Arrays Methodes
+    Length
+*/
+
+//Index Start From 0 [ 0 , 1 , 2 , 3]
+
+let myFriends1 = ["anderia", "andy", "lime", "ptol"];
+
+console.log(myFriends1.length); //4
+
+myFriends1[myFriends.length - 1] = "malik";
+
+myFriends1.length = 2;
+
+console.log(myFriends1);
+
+/*
+  Arrays Methods [Adding And Removing]
+    unshift("" , "") Add Element To The First
+    Push("" , "") Add Element To The End
+    shift() Remove First Element From Array
+    pop() Remove Lest Element From Array 
+*/
+
+let myFriends2 = ["Ahmed", "mohemed", "sayed", "Alaa"];
+
+console.log(myFriends2);
+
+myFriends2.unshift("osama", "BEll");
+
+console.log(myFriends2);
+
+myFriends2.push("Asma", "salma");
+
+console.log(myFriends2);
+
+let first = myFriends2.shift();
+
+console.log(myFriends2);
+
+console.log(first);
+
+let last = myFriends2.pop();
+
+console.log(myFriends2);
+
+console.log(last);
+
+/*
+  Arrays Methods [Search]
+    indexOf(Search Element , From Index [Opt])
+    lastIndexOf(Search Element , From Index [Opt])
+    includes(ValueToFind , FromIndex [Opt]) [ES7]
+*/
+
+let myFriends3 = ["Ahmed", "Mohssen", "sayed", "Alaa", "Ahmed"];
+
+console.log(myFriends3);
+
+console.log(myFriends3.indexOf("Ahmed"));
+console.log(myFriends3.indexOf("Ahmed", 2)); //عاوز ابحث عن ايه وابدا منين
+
+console.log(myFriends3.lastIndexOf("Ahmed"));
+console.log(myFriends3.lastIndexOf("Ahmed", -2));
+
+console.log(myFriends3.includes("Ahmed"));
+console.log(myFriends3.includes("Ahmed", 2)); //احمد موجود ولا لااه ابحثي لي من بؤاية الاتنين
+
+if (myFriends3.indexOf("shia") === -1) {
+  // لو الاندكس ملقاش القيمه المطلوبه بيطاعلك-1
+  console.log("Not found");
+}
+
+if (myFriends3.lastIndexOf("shia") === -1) {
+  // لو الاندكس ملقاش القيمه المطلوبه بيطاعلك-1
+  console.log("Not found");
+}
+
+console.log(myFriends.indexOf("gg"));
+console.log(myFriends.lastIndexOf("gg"));
+
+/*
+ Arrays Methods [Sort]
+  sort(Function [Opt])
+  reverse
+*/
+
+let myFriends4 = [
+  10,
+  "sayed",
+  "Mohammeed",
+  "90",
+  1000,
+  100,
+  20,
+  "10",
+  -20,
+  -10,
+];
+
+console.log(myFriends4);
+console.log(myFriends4.sort()); // بيبدا بالارقام السالبه الاول وبعد كده الموجبه علي حسب الابجدية مش علي حسب قيمة الارقم يعني مثلا 1000 هتيجي قبل 20 علشان ابجديا الواحد بيجي قبل الاتنبن معلومات في غاية البداهه😂😂😂😂😂
+console.log(myFriends4.reverse()); // ماشية بالعكس يعني بتعكس ترتيب المصفوفه
+console.log(myFriends4.sort().reverse());
+
+/*
+  Arrays Methodes [Slicing]
+    slice(start [Opt] , End [Opt] Not Including End)
+    slice() => All Array
+    If Start Is Undefined => 0
+    Negative count From End
+    If End Is Undefined || > Indexes =>Slice To The End Array.length
+    Return New Array
+    splice(Start [Mand] , DeleteCount [Opt] [0 No Remove], the Items to Add [opt])
+    If Negative => Start From The End
+*/
+
+let myFriends5 = ["Ahmed", "sayed", "Ali", "osama", "Gamal", "Ameer"];
+console.log(myFriends5);
+console.log(myFriends5.slice());
+console.log(myFriends5.slice(1));
+console.log(myFriends5.slice(1, 3)); // not including End
+console.log(myFriends5.slice(-3));
+console.log(myFriends5.slice(1, -2));
+console.log(myFriends5.slice(-4, -2));
+console.log(myFriends5); //ذي ماهي ماتغيرتش الاتعديلات الي فوق بتطلع مصفوفه جديده مش بتغير قيمة الاصلية
+
+myFriends5.splice(1, 1, "shia", "smara");//  ابدا منين . كام عنصر هحذفه.الاضافات اللي انا عاوزه اضفها 
+
+console.log(myFriends5);
+
+/*
+  Arrays Methodes [Joining]
+    concat(array, array) => Return A New Array
+    Join(Separator)
+*/
+
+let myFriends6 = ["Ahmed" ,"sayed" ,"Ali" , "Osama" ,"Gmail" ,"Amerr"];
+let myNewFriends = ["Samar" , "Sameh"];
+let schoolFriends = ["Haytem" , "Shady"];
+
+let allFriends = myFriends6.concat(myNewFriends ,schoolFriends ,"IAM" , ["sh" , "lol"] ); //😂لم العيله كلها في شوال 
+
+console.log(allFriends);
+console.log(allFriends.join()); //بتلممهم كلهم في استرنج لو سبتها فاضيه من غير ما احطت علامه هتحط فصله بين عناصر الااري بشكل تلقاؤي
+console.log(allFriends.join("")); // مش هيكون فيه فاصله هليزقو في بعض
+console.log(allFriends.join(" @ "));
+console.log(allFriends.join(" | "));
+
+//chalange 47
+
+let zero = 0;
+let counter = 3;
+let my = ["Ahmed", "Mazero", "Elham", "Osama", "Gamal", "Ameer"];
+
+my = my.slice(zero ,++counter).reverse()
+console.log(my); // ["Osama", "Elham", "Mazero", "Ahmed"];
+
+console.log(my.slice(++zero , --counter)); // ["Elham", "Mazero"]
+
+console.log(my[zero][--zero].concat(my[++zero][zero], my[++zero][zero],my[zero][counter],my[zero][++counter],my[zero][++counter])); // "Elzero"
+//             1       0                 1      1           2      2       2       3           2        4        2        5
+// anthoer way
+ console.log(`${my[1].slice(0 ,2 )}${my[2].slice(2)}`)
+console.log(my[zero][--counter].concat(my[zero][++counter].toUpperCase())); // "rO"
+
