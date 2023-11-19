@@ -1006,7 +1006,7 @@ console.log(myFriends5.slice(1, -2));
 console.log(myFriends5.slice(-4, -2));
 console.log(myFriends5); //ذي ماهي ماتغيرتش الاتعديلات الي فوق بتطلع مصفوفه جديده مش بتغير قيمة الاصلية
 
-myFriends5.splice(1, 1, "shia", "smara");//  ابدا منين . كام عنصر هحذفه.الاضافات اللي انا عاوزه اضفها 
+myFriends5.splice(1, 1, "shia", "smara"); //  ابدا منين . كام عنصر هحذفه.الاضافات اللي انا عاوزه اضفها
 
 console.log(myFriends5);
 
@@ -1016,11 +1016,14 @@ console.log(myFriends5);
     Join(Separator)
 */
 
-let myFriends6 = ["Ahmed" ,"sayed" ,"Ali" , "Osama" ,"Gmail" ,"Amerr"];
-let myNewFriends = ["Samar" , "Sameh"];
-let schoolFriends = ["Haytem" , "Shady"];
+let myFriends6 = ["Ahmed", "sayed", "Ali", "Osama", "Gmail", "Amerr"];
+let myNewFriends = ["Samar", "Sameh"];
+let schoolFriends = ["Haytem", "Shady"];
 
-let allFriends = myFriends6.concat(myNewFriends ,schoolFriends ,"IAM" , ["sh" , "lol"] ); //😂لم العيله كلها في شوال 
+let allFriends = myFriends6.concat(myNewFriends, schoolFriends, "IAM", [
+  "sh",
+  "lol",
+]); //😂لم العيله كلها في شوال
 
 console.log(allFriends);
 console.log(allFriends.join()); //بتلممهم كلهم في استرنج لو سبتها فاضيه من غير ما احطت علامه هتحط فصله بين عناصر الااري بشكل تلقاؤي
@@ -1034,14 +1037,254 @@ let zero = 0;
 let counter = 3;
 let my = ["Ahmed", "Mazero", "Elham", "Osama", "Gamal", "Ameer"];
 
-my = my.slice(zero ,++counter).reverse()
+my = my.slice(zero, ++counter).reverse();
 console.log(my); // ["Osama", "Elham", "Mazero", "Ahmed"];
 
-console.log(my.slice(++zero , --counter)); // ["Elham", "Mazero"]
+console.log(my.slice(++zero, --counter)); // ["Elham", "Mazero"]
 
-console.log(my[zero][--zero].concat(my[++zero][zero], my[++zero][zero],my[zero][counter],my[zero][++counter],my[zero][++counter])); // "Elzero"
+console.log(
+  my[zero][--zero].concat(
+    my[++zero][zero],
+    my[++zero][zero],
+    my[zero][counter],
+    my[zero][++counter],
+    my[zero][++counter]
+  )
+); // "Elzero"
 //             1       0                 1      1           2      2       2       3           2        4        2        5
 // anthoer way
- console.log(`${my[1].slice(0 ,2 )}${my[2].slice(2)}`)
+console.log(`${my[1].slice(0, 2)}${my[2].slice(2)}`);
 console.log(my[zero][--counter].concat(my[zero][++counter].toUpperCase())); // "rO"
 
+/*
+Loop 
+  For
+  for ( [1] [2] [3] ) {
+    //Block Of Code 
+  }
+  */
+for (let i = 0; i < 10; i++) {
+  console.log(i);
+}
+
+/*
+  Loop 
+    Loop On Sequences
+ */
+
+let myFriends8 = ["Osama", "osaka", "otaka", "oynoze", "Ali"];
+
+// console.log(myFriends8[0]);
+// console.log(myFriends8[1]);
+// console.log(myFriends8[2]);
+// console.log(myFriends8[3]);
+// console.log(myFriends8[4]);
+
+for (i = 0; i < myFriends8.length; i++) {
+  console.log(myFriends8[i]);
+}
+
+let myFriends9 = [
+  1,
+  2,
+  "osama",
+  3,
+  4,
+  "uota",
+  7,
+  8,
+  "Osama",
+  "osaka",
+  "otaka",
+  "oynoze",
+  "Ali",
+];
+
+let onlyNames = [];
+
+for (i = 0; i < myFriends9.length; i++) {
+  if (typeof myFriends9[i] === "string") {
+    onlyNames.push(myFriends9[i]);
+  }
+}
+console.log(onlyNames);
+
+/*
+Loop
+  Nested Loops
+*/
+
+let products = ["Keyboard", 20, 10, "Mouse", "pen", 40, "Monitor", "bad"];
+
+let colors = ["REd", "Green", "Black"];
+
+let models = [2020, 2021];
+
+for (i = 0; i < products.length; i++) {
+  console.log("#".repeat(15));
+  console.log(`# ${products[i]}`);
+  console.log("#".repeat(15));
+
+  console.log("Colors:");
+  for (j = 0; j < colors.length; j++) {
+    console.log(`- ${colors[j]}`);
+  }
+
+  console.log("Models:");
+  for (let k = 0; k < models.length; k++) {
+    console.log(`- ${models[k]}`);
+  }
+}
+console.log("++++++++++++++++++++++++++++++++++++");
+/*
+Loop Control
+  Break 
+  Countinue
+  Label
+*/
+
+for (i = 0; i < products.length; i++) {
+  if (products[i] === "pen") {
+    break;
+  }
+  console.log(products[i]);
+}
+
+console.log("++++++++++++++++++++++++++++++++++++");
+
+for (i = 0; i < products.length; i++) {
+  if (typeof products[i] === "number") {
+    continue;
+  }
+  console.log(products[i]);
+}
+
+console.log("+++++++++++++++++++++++++++++++++++++++");
+
+mainLoop: for (i = 0; i < products.length; i++) {
+  console.log(`# ${products[i]}`);
+  nestedLoop: console.log("Colors:");
+  for (j = 0; j < colors.length; j++) {
+    if (colors[j] === "Green") break mainLoop;
+    console.log(`- ${colors[j]}`);
+  }
+}
+console.log("+++++++++++++++++++++++++++++++++++++++");
+
+/*
+Loop For Advaced Example
+*/
+i = 0;
+for (;;) {
+  console.log(products[i]);
+  i += 2;
+  if (i === products.length) {
+    break;
+  }
+}
+
+/*
+  Products Practice
+*/
+
+let products2 = ["Keyboard", "Mouse ", "pen", "pad", "Monitor", "iphone"];
+let colors2 = ["Red", "Green", "Blue"];
+let showCount = 2;
+
+document.write(`<h1>Show ${showCount} Products</h1>`);
+
+for (i = 0; i < showCount; i++) {
+  document.write(`<div>`);
+  document.write(`<h3> [${i + 1}] ${products2[i]}</h3>`);
+  for (j = 0; j < colors2.length; j++) {
+    document.write(`<p>${colors2[j]} </p>`);
+  }
+  document.write(`<p/>${colors2.join(" | ")}</p>`);
+  document.write(`</div>`);
+}
+
+/*
+  Loop
+   while
+*/
+console.log("+++++++++++++++++++++++++++++++++++++++");
+
+let products1 = ["keyboard", "Mouse", "Pen", "ped", "Monitor", "iphone"];
+
+let index1 = 0;
+
+while (index1 < products1.length) {
+  console.log(products1[index1]);
+
+  index1 += 1;
+}
+console.log("+++++++++++++++++++++++++++++++++++++++");
+/*
+ Loop
+  Do / while
+ */
+
+i = 0;
+
+do {
+  console.log(i);
+  i++;
+} while (false);
+
+console.log(i);
+
+/*
+ Loop challenge 56
+ */
+
+let myAdmins = ["Ahmed 😎", "Osama😑", "Sayed🤨", "stop", "samera"];
+let myEployes = [
+  "Amagad",
+  "Samah",
+  "Ameer",
+  "Omar",
+  "Othman",
+  "Amany",
+  "Samia",
+];
+
+document.write(`<div>We Have x Admins</div>`);
+
+document.write(
+  `<div> We Have${
+    myAdmins.slice(0, myAdmins.indexOf("stop")).length
+  } Admins</div>`
+);
+
+document.write(`<hr/>`);
+let countA = 1;
+let countS = 1;
+let countO = 1;
+for (i = 0; i < myAdmins.length; i++) {
+  if (myAdmins[i] === "stop") {
+    break;
+  }
+  document.write(`<div>`);
+  document.write(`"The Admin For Team ${[i + 1]} Is ${myAdmins[i]}"`);
+  document.write(`<h3>Team Members:</h3>`);
+  for (j = 0; j < myEployes.length; j++) {
+    if (myEployes[j].indexOf("A") === myAdmins[i].indexOf("A")) {
+      if (myEployes[j].includes("A")) {
+        document.write(`<p>- ${[countA]} ${myEployes[j]}</p>`);
+        countA++;
+      }
+    }
+    if (myEployes[j].indexOf("S") === myAdmins[i].indexOf("S")) {
+      if (myEployes[j].includes("S")) {
+        document.write(`<p>- ${[countS]} ${myEployes[j]}</p>`);
+        countS++;
+      }
+    }
+    if (myEployes[j].startsWith("O") && myAdmins[i].startsWith("O")) {
+      document.write(`<p>- ${[countO]} ${myEployes[j]}</p>`);
+      countO++;
+    }
+  }
+  document.write(`</div>`);
+  document.write(`<hr/>`);
+}
