@@ -1288,3 +1288,187 @@ for (i = 0; i < myAdmins.length; i++) {
   document.write(`</div>`);
   document.write(`<hr/>`);
 }
+/* lessons 57 - 63
+  20/ 11 / 20323
+*/
+/*
+  Function
+    What Is Function ?
+    User Defined vs Built In
+    Syntax + Basic Usage
+    Example From Real Life 
+    Parameter + Argument
+    Practical Ecample
+*/
+
+console.log(typeof console.log);
+
+function sayHello(userName, age) {
+  if (age > 40) {
+    console.log("This App Is Not For Sutiable For You ");
+  } else {
+    console.log(`Hello ${userName} Your Age is ${age}`);
+  }
+}
+
+sayHello("osama", "40");
+sayHello("solo", "50");
+sayHello("empada", "23");
+
+/*
+  Function Advanced Examples
+*/
+
+function generateYears(start, end, exclude) {
+  for (i = start; i <= end; i++) {
+    if (i === exclude) {
+      continue;
+    }
+    console.log(i);
+  }
+}
+
+generateYears(2000, 2023, 2022);
+
+/*
+  Function
+    Return
+    Automatic Semicolon Insertion [No Line Terminator Allowed]
+    Interrupting
+*/
+
+function sayHello(userName, num1, num2) {
+  return `Hi ${userName} ${num1 + num2} `; //مفيش بعد الريتيرن اي حاجه تنفع تتحط unreatchable code 😢
+}
+console.log(sayHello("lofeeee😀", 20, 30));
+
+let result1 = sayHello("lofeeee😀", 20, 30);
+console.log(result1);
+
+function generate(start, end) {
+  for (i = start; i <= end; i++) {
+    console.log(i);
+    if (i === 5) {
+      return `Interruptting`; // بيوقف تنفيذ الكود
+    }
+  }
+}
+
+generate(1, 10);
+
+/*
+  Function
+    Default Function Parameters
+    Function Parameters Default [ Undefind]
+    Old Strategies [Condition + Logical Or]
+    ES6 Method
+*/
+
+function sayHello(username = "Unknown", age = "Unknown") {
+  // if ( age === undefined){
+  //   age = "Unkown" ;
+  // }
+  // age = age || "Unkown"
+  return `Hi! ${username} Your Age Is ${age} `;
+}
+
+console.log(sayHello());
+
+/*
+  Function
+    Rest parameters
+    Only One Allowed
+    Must Be Last Element
+*/
+
+function calc(...numbers) {  //Rest Parameters
+  let result = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    console.log(numbers[i]);
+    result += numbers[i]; // result = result +numbers[i]
+  }
+  return ` how you did that return are you working in different direction that is woried ${result}`;
+}
+console.log(calc(10, 20, 80, 50));
+
+/* 
+  Function Advanced Practice
+    Parameters
+    Default
+    Rest
+    Loop
+    Condition
+*/
+
+function showInfo(
+  user = "Unknown👻",
+  age = "Unknown",
+  rate = 0,
+  showSkills = "Yes",
+  ...skills
+) {
+  document.write(`<div>`);
+  document.write(`<h2>Welcome ${user} 🍣</h2>`);
+  document.write(`<p>Age: ${age}</p>`);
+  document.write(`<p>Hour Rate: $${rate}</p>`);
+  if (showSkills === "Yes") {
+    if (skills.length > 0) {
+      document.write(`<p> Skills: ${skills.join(" | ")} </p>`);
+    } else {
+      document.write(`<p>Skills: No Skills </p>`);
+    }
+  } else {
+    if (skills.length > 0) {
+      document.write("Hidden Skills 😒");
+    } else {
+      document.write(`<p>Skills: No Skills </p>`);
+    }
+  }
+  document.write(`</div>`);
+}
+
+showInfo("Sushi", 22, 5, "Yes", "HTML", "Css", "Js");
+
+//Challenge 63 parmameters
+
+/*
+  Function  - Random Argument Challenge
+  Creat Function ShowDetails
+  Function Accept 3 Parameters [ a, b , c]
+  Data Types For Info Is
+    String = > Name
+    Number = > Age
+    Boolean = > Status
+  Argument Is Random
+  Data Is Not Sarted Output Depend On Data Types
+    Use Ternary Conditional Operator
+*/
+
+// showDetails("Osama", 27, true); //Hello Osama Your Age Is 38 , Are You Available For Hire
+// showDetails(38, "Osama", true); //Hello Osama Your Age Is 38 , Are You Available For Hire
+// showDetails(true, 38, "Osama"); //Hello Osama Your Age Is 38 , Are You Available For Hire
+// showDetails(false, "Osama", 38); //Hello Osama Your Age Is 38 , Are not You Available For Hire.
+document.write(`<hr/>`);
+function showDetails(name, age, free) {
+  var tina = [name, age, free];
+  for (i = 0; i < tina.length; i++) {
+    typeof tina[i] === "string" ? (name = tina[i]) : null;
+    typeof tina[i] === "number" ? (age = tina[i]) : null;
+    if (typeof tina[i] === "boolean") {
+      free = tina[i];
+      free == true
+        ? (free = `Are You Abailable For Hire🥳`)
+        : (free = `You Are not  Abailable For Hire😢`);
+    }
+  }
+  document.write(`<div> Hello ${name} Your Age Is ${age} , ${free} .</div>`);
+}
+showDetails("Osama", 27, true);
+showDetails(38, "Osama", true);
+showDetails(true, 38, "Osama");
+showDetails(false, "Osama", 38);
+document.write(`<hr/>`);
+
+// Since local variables are only recognized inside their functions, variables with the same name can be used in different functions.
+
+// Local variables are created when a function starts, and deleted when the function is completed
