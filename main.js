@@ -509,7 +509,7 @@ console.log(a2.slice(-5, -3)); // لوعاوزه يبدا العد من الاخ
 console.log(a2.repeat(5));
 
 console.log(a2.split("")); // بيقصص العنصر
-console.log(a2.split(" "));
+console.log(a2.split(" ")); // turn to array and cut the sentance from the space woow
 console.log(a2.split("|"));
 console.log(a2.split(" ", 2));
 
@@ -1381,7 +1381,8 @@ console.log(sayHello());
     Must Be Last Element
 */
 
-function calc(...numbers) {  //Rest Parameters
+function calc(...numbers) {
+  //Rest Parameters
   let result = 0;
   for (let i = 0; i < numbers.length; i++) {
     console.log(numbers[i]);
@@ -1472,3 +1473,273 @@ document.write(`<hr/>`);
 // Since local variables are only recognized inside their functions, variables with the same name can be used in different functions.
 
 // Local variables are created when a function starts, and deleted when the function is completed
+
+// 14/ 12 /2023
+// week 9
+/*
+  Funcytion
+    Anonymous Function
+    Calling Named Function vs Anonymous Function
+    Argument To Other Function
+    Task Without Name
+    SetTimeout
+*/
+
+let caluclator = function (num1, num2) {
+  return num1 + num2;
+};
+
+console.log(caluclator(10, 20));
+
+function sayHello() {
+  console.log("Hello Osama");
+}
+
+document.getElementById("show").onclick = sayHello;
+
+// document.getElementById("show").onclick = function () {
+//   console.log("show");
+// };
+
+// setTimeout(function () {
+//   console.log("Woow");
+// }, 2000);
+
+/*
+  Function
+    Function Inside Function
+    Return Function
+*/
+
+//Example 1
+
+// function sayMessage(fName, lName) {
+//   let message = "Hello";
+//   //Nested Function
+//   function concatMsg() {
+//     message = `${message} ${fName} ${lName}`;
+//   }
+//   concatMsg();
+//   return message;
+// }
+// console.log(sayMessage("Ahemd", "kim"));
+
+//Example 2
+
+// function sayMessage(fName, lName) {
+//   let message = "Hello";
+//   //Nested Function
+//   function concatMsg() {
+//     return `${message} ${fName} ${lName}`;
+//   }
+//   return concatMsg();
+
+// }
+// console.log(sayMessage("osama", "mohammed😎"));
+
+//Example 3
+
+function sayMessage(fName, lName) {
+  let message = "Hello";
+  //Nested Function
+  function concatMsg() {
+    function getFullName() {
+      return `${fName} ${lName} `;
+    }
+    return `${message} ${getFullName()}`;
+  }
+  return concatMsg();
+}
+console.log(sayMessage("osama", "mohammed😎"));
+
+/*
+  Function
+    Arrow Function
+      REgular Vs Arrow [param + No Param]
+      Multiple Lines
+      => Arrow operator
+*/
+
+//  let print =function() {
+//   return 10;
+// }
+
+// let print = (_) => 10;
+// There is no parameter
+// only used when there is only one statment one line
+// _ insted of ()  one character better than two character
+
+// let print = num => num;
+//if you have only one parameter you can delete ()
+// if you have more than one you have to use ()
+
+//  let print =function(num) {
+//   return num;
+// }
+
+//  let print =function(num1 , num2) {
+//   return num1 + num2;
+// }
+
+let print = (num1, num2) => num1 + num2;
+
+//if you have more than one line you can not delet "return or {}"
+
+console.log(print(100, 100));
+
+//67
+/*
+  Scope التحكم في التواجد بتاع المتغيرات
+    global And Local Scope
+*/
+
+var aScope = 1;
+let bScope = 2;
+
+function showText() {
+  var aScope = 1;
+  let bScope = 2;
+  console.log(`Function - From Local ${aScope}`);
+  console.log(`Function - From Local ${bScope}`);
+}
+
+showText();
+
+console.log(`From Gloval ${aScope}`);
+console.log(`From Gloval ${bScope}`);
+
+// golbal accesable from everywhere
+
+/*
+  Scope 
+    Block Scope [If , Switch , For ]
+*/
+
+var x = 10;
+
+if (100 === 100) {
+  var x = 50;
+  console.log(`from If Block  ${x}`);
+}
+
+console.log(`From Global ${x}`);
+
+/*
+  Scope
+    Lexical Scope
+
+  search 
+    Exaution Context
+    Lexical Environment
+*/
+
+function parent() {
+  let a = 10;
+
+  function child() {
+    console.log(a);
+
+    function grand() {
+      let b = 100;
+      console.log(`From grand ${a}`);
+      console.log(`From grand ${b}`);
+    }
+    grand();
+  }
+  child();
+}
+parent();
+
+// Function Arrow Challenges
+
+// [1] one Statement In Function
+// [2] Convert To Arrow Function
+// [3] Print The Output [Arguments May Change]
+
+let names = function (...name) {
+  return `String ${name
+    .map(function (element) {
+      return `[${element}]`;
+    })
+    .join(" , ")} => Done ! `;
+};
+
+// anthor solution
+
+// let names = function (...name){
+//   return ` String  [ ${name.join(" ],[")}] = > Done !`
+// }
+
+let names2 = (...name) =>
+  `String ${name.map((element) => `[${element}]`).join(" , ")} => Done !`;
+
+console.log(names("Osama", "Mohamed", "Ail", "Ibrahim"));
+console.log(names2("Osama", "Mohamed", "Ail", "Ibrahim"));
+// String [Osama] , [Mohamed] , [Ail] , [Ibrahim] => Done !
+
+/*=========================================================*/
+
+// [1] Replace ??? In Return Statement To Get The Output
+// [2] Creat The Same Function With Regular Syntax
+// [3] Use Array inside The Arguments To Get The output
+
+// 80
+let myNumbers = [20, 50, 10, 60];
+let calc1 = function (one, two, ...nums) {
+  return +[nums] + one + two; // [] to destroy function
+};
+
+let calc2 = (one, two, ...nums) => one + two + +[nums];
+console.log(calc1(10, myNumbers[2], myNumbers[3]));
+console.log(calc2(10, myNumbers[2], myNumbers[3]));
+
+x = findMax(1, 123, 500, 115, 44, 88);
+
+function findMax() {
+  let max = -Infinity;
+  for (let i = 0; i < arguments.length; i++) {
+    if (arguments[i] > max) {
+      max = arguments[i];
+    }
+  }
+  return max;
+}
+
+console.log(findMax(x));
+
+// 11/2/2024
+// week 10
+
+/*
+  Higher Order Functios
+    > is a  function that accepts functions a parameters and /or returns a function
+
+    Map
+      method creats a new array
+      populated with the results of calling a provided function on every element
+      in the calling array
+
+    Syntax map(callBack Function(Element , Index , Array) { }, thisArg)
+      Elememt => The current elemnt being processed in the array 
+      index => The index of the current element beging processed in the array
+      Array => The Current Array
+
+    Notes 
+    Map Return A New Array
+
+    Examples
+      Anonymous Function
+      Named Function
+*/
+
+let myNums = [1, 2, 3, 4, 5, 6];
+
+let newArray = [];
+
+for (i = 0; i < myNums.length; i++) {
+  newArray.push(myNums[i] + myNums[i]);
+}
+
+console.log(newArray);
+
+// Same Idea With Map
