@@ -73,10 +73,10 @@ variables Intro
 --declare varibles first and then you can use it
 */
 
-(user = "osama-8"), (age = 55); // 2variables one declaration
+(user3 = "osama-8"), (age = 55); // 2variables one declaration
 
-console.log(user);
-console.log(user);
+console.log(user3);
+console.log();
 console.log(hello);
 console.log(age);
 
@@ -1743,3 +1743,527 @@ for (i = 0; i < myNums.length; i++) {
 console.log(newArray);
 
 // Same Idea With Map
+
+let addSelf1 = myNums.map(function (element, index, arr) {
+  // console.log(`current Element => ${element}`); //write element is nessary
+  // console.log(`current Index => ${index}`); //write index is optional
+  //   console.log(`Arry => ${arr}`); // write arr is optional
+  // console.log(`this => ${this}`);
+  return element + element;
+}, 10);
+
+let addSelf2 = myNums.map((element) => element + element);
+
+console.log(addSelf1);
+console.log(addSelf2);
+
+function addition(ele) {
+  return ele + ele;
+}
+
+let add = myNums.map(addition);
+
+console.log(add);
+
+// so you can use annoymos function or name of function with map 🙂
+
+/*
+  Map
+    Sawp Cases
+    Inverted Numbers
+    Ignore Blooean Value
+*/
+
+let swappingCases = "elZERo";
+let invertedNumbers = [1, -10, -20, 15, 100, -30];
+let ignoreNumbers = "Elzero123er40";
+
+let sw = swappingCases
+  .split("")
+  .map(function (ele) {
+    //condition ? True : False
+    return ele === ele.toUpperCase() ? ele.toLowerCase() : ele.toUpperCase();
+  })
+  .join("");
+
+console.log(sw);
+
+let inv = invertedNumbers.map(function (ele) {
+  return -ele;
+});
+console.log(inv);
+
+let ign = ignoreNumbers
+  .split("")
+  .map(function (ele) {
+    return isNaN(parseInt(ele)) ? ele : "";
+  })
+  .join("");
+
+console.log(ign);
+
+/*
+  Filter
+    method creates a new array 
+    with all elements that pass the test implemented by the provided function.
+
+  
+  Syntas filter(callBackFunction(Element , Index , Array) {} , thisArg )
+    Element => The Current elemnt being processed in the array
+    index => The index of the current element being processed in the array
+    Array => The Current Array
+*/
+
+// Get Friends With Name Stars With A
+let friends = ["Ahmed", "sameh", "Sayed ", "Asmaa", "Amgad", "Israa"];
+
+let filterdFriends = friends.filter(function (el) {
+  return el.startsWith("A") ? true : false;
+});
+
+console.log(filterdFriends);
+
+// Get Even Numbers Only
+let numbers = [11, 20, 2, 5, 17, 10];
+
+let evenNumbers = numbers.filter(function (el) {
+  return el % 2 == 0;
+});
+
+console.log(evenNumbers);
+
+// Test Map vs filter
+
+// let addMap = numbers.map(function (el) {
+//   return el + el;
+// });
+
+// console.log(addMap);
+
+// let addFilter = numbers.filter(function (el) {
+//   return el + el;
+// });
+
+// console.log(addFilter);
+
+/*
+  Filter
+    Filter Longest Word By Number
+*/
+
+// filter Words More Than 4 Charcters
+let sentence = " I Love Foood Code Too Playing Much";
+
+let smallWords = sentence
+  .split(" ")
+  .filter(function (ele) {
+    return ele.length <= 4;
+  })
+  .join(" ");
+
+console.log(smallWords);
+
+// Ignore Numbers
+let ignoreNumbers1 = "Elz123er4o";
+
+let ign1 = ignoreNumbers
+  .split("")
+  .map(function (ele) {
+    return isNaN(parseInt(ele)) ? ele : "";
+  })
+  .join("");
+
+console.log(ign1);
+
+// Filter Strings + Multiply
+let mix = "A13BS2ZX";
+
+newMix = mix
+  .split("")
+  .filter(function (ele) {
+    return !isNaN(ele);
+  })
+  .map(function (ele) {
+    return ele * ele;
+  })
+  .join(" ");
+
+console.log(newMix);
+
+/*
+  Reduce
+    method exeutes a reducer function on eaxh element of the array,
+    resulting in a single output value
+
+  syntax
+  reduce(callBackFunc(Accumulator, current Val, Current Index < Source Array) {} , InitialValue)
+    Accumlator => the accumulated Value Previously returned in the last invocation
+    current Val => The Current element being processed in the array
+    Index => The index of the current element being processed in the array
+            starts from index 0 if an  initialvalue is provided.
+            otherwise, it starts from index 1 
+    Array => The Current Array
+*/
+
+let nums = [10, 20, 15, 30];
+
+let add2 = nums.reduce(function (acc, current, index, arr) {
+  console.log(`Acc => ${acc}`);
+  console.log(`Current Element => ${current}`);
+  console.log(`current Element Index => ${index}`);
+  console.log(`Array => ${arr}`);
+  console.log(acc + current);
+  console.log(`################`);
+  return acc + current;
+}, 5);
+
+console.log(add2);
+
+/*
+  Reduce
+    Longest word
+    Remove Characters + Use Reduce
+*/
+
+let theBiggest = [
+  "Bla",
+  "propanganda",
+  "other",
+  "AAA",
+  "Battery",
+  "Test",
+  "propagnada-twooo",
+];
+
+let check = theBiggest.reduce(function (acc, current) {
+  console.log(`Acc => ${acc}`);
+  console.log(`Current Element => ${current}`);
+  console.log(acc.length > current.length ? acc : current);
+  console.log(`################`);
+  return acc.length > current.length ? acc : current;
+});
+
+console.log(check);
+
+let removeChars = ["E", "@", "@", "L", "Z", "@", "@", "E", "R", "@", "O"];
+
+let finalString = removeChars
+  .filter(function (ele) {
+    // return ele != "@";
+    return !ele.startsWith("@");
+  })
+  .reduce(function (acc, current) {
+    return acc + current;
+  });
+
+console.log(finalString);
+
+/*
+  forEach
+    method executes a provided function once for each array element.
+
+  Syntax forEach (callBackFunction(Element, Index , Array) {} , thisArg)
+    Element => The Current element being processd in the array.
+    Index => The index of the current element being processed in the array.
+    Array => The Current Array
+
+  Note 
+    doesnt return Anything [Undefined]
+    Break Will Not Break The Loop
+*/
+
+let allLis = document.querySelectorAll("ul li");
+let allDivs = document.querySelectorAll(" .content div");
+
+allLis.forEach(function (ele) {
+  ele.onclick = function () {
+    // Remove Active Class From All Elements
+    allLis.forEach(function (ele) {
+      ele.classList.remove("active");
+    });
+    // Add Active Class To This Element
+    this.classList.add("active");
+    // Hide All Divs
+    allDivs.forEach(function (ele) {
+      ele.style.display = "none";
+    });
+  };
+});
+
+/*
+  Higher Order Functions Challenges
+
+  You Can Use
+    ,
+    _
+    Space
+    True => One Time Only In the Code
+
+  You CanNot Use
+    Numbers
+    Letters
+
+    You Must Use [Filter + Map + Reduce + Your Knowledge]
+    Order Is Not Important
+    All In One Chain
+
+*/
+
+let myString = "1,2,3,EE,l,z,e,r,o,_,W,e,b,_,S,c,h,o,o,l,2,0,z";
+
+let solution = "???????";
+
+solution = myString
+  .split("")
+  .filter(function (ele) {
+    return isNaN(parseInt(ele)) ? (ele != "," ? ele : "") : "";
+  })
+  .map(function (ele) {
+    return ele === "_" ? (ele = " ") : ele;
+  })
+  .reduce(function (acc, current) {
+    return acc === current ? acc : acc + current;
+  })
+  .slice(0, -true);
+
+console.log(solution); // Elzero Web School
+
+/* 
+  Object
+    Into and What IS object
+    Testing windo object 
+    Accessing object
+*/
+
+let user = {
+  //properties
+  theName: "Osama",
+  theAge: 38,
+  //Methods
+  sayHello: function () {
+    return "Helloooooooo🥳 object";
+  },
+};
+
+console.log(user.theName);
+console.log(user.theAge);
+console.log(user.sayHello());
+
+//80
+/*
+  object
+    dig Deeper
+    dotNotation vs Bracket Notation
+    Dynamic property Name
+    اي بيانات في الدنيا تنفع تتحول للاسترنج تقدر تستخدمها ك اسم للبربورتي
+*/
+
+let myVar = "country"; // Dynamic Property Name
+
+let user2 = {
+  theName: "Osama",
+  "country of": "Egypt",
+  country: "Japan",
+};
+
+console.log(user2.theName);
+console.log(user2["country of"]);
+console.log(user2.myVar); // with dotNotation you can not use dynamic property insted you have to use Bracket Notation
+console.log(user2[myVar]);
+console.log(user2.country);
+
+/*
+    Rules for Identifiers in JavaScript:
+Start with: A letter (A-Z, a-z), an underscore (_), or a dollar sign ($).
+After the first character: Any combination of letters, digits, underscores, or dollar signs.
+Case-sensitive: For example, myVar and myvar are different identifiers.
+Keywords: Identifiers cannot be the same as reserved words in JavaScript, like if, else, var, let, const, function, etc.
+
+    Examples of Valid Identifiers:
+userName
+_id
+$element
+data2
+user_age
+
+    Examples of Invalid Identifiers:
+2name (cannot start with a digit)
+var (reserved keyword)
+-username (hyphens are not allowed)
+*/
+
+//81
+/*
+  object
+    Nested object And Trainings
+*/
+
+let user4 = {
+  name: "Shaimaaaaaaaaaaaa", // propeties
+  age: 100,
+  skills: ["HTML", "Css", "Js"],
+  available: false,
+  addresses: {
+    //Nested object from user4
+    japan: "tokyo",
+    egypt: {
+      //Nested object form addresses
+      one: "sina",
+      two: "aswan",
+    },
+  },
+  checkAv: function () {
+    if (user4.avaliable === true) {
+      return "free for work";
+    } else {
+      return "not free";
+    }
+  },
+};
+
+console.log(user4.name);
+console.log(user4.age);
+console.log(user4.skills);
+console.log(user4.skills.join(" | "));
+console.log(user4.skills[2]);
+console.log(user4.addresses);
+console.log(user4.addresses.japan);
+console.log(user4.addresses.egypt);
+console.log(user4["addresses"]["egypt"]["one"]);
+console.log(user4.addresses.egypt["two"]);
+
+console.log(user4.checkAv());
+
+//82
+/*
+  object
+    Creat With New Keyword new Object(); 
+*/
+
+let user5 = new Object({
+  age: 20,
+}); //O id capital
+
+console.log(user5);
+
+user5.age = 38; // the way who to add prperty to your object
+user5["country"] = "Egypt";
+
+console.log(user5);
+
+user5.sayHello = function () {
+  return "Hello👻";
+};
+
+console.log(user5);
+console.log(user5.age);
+console.log(user5.country);
+console.log(user5.sayHello());
+
+/*
+  Function this Keyword
+    this Introduction
+    this Inside Object Method
+      When a function is called as a method of an object,
+      its this is set to the object the method is called on .
+    Global object 
+    Test Variables With Window And This
+    Globla Context
+    Function Context
+    
+  Search 
+    Strict Mode 
+*/
+
+console.log(this); //window
+console.log(this === window); //true
+
+myVar2 = 100;
+
+console.log(window.myVar2);
+console.log(this.myVar2);
+
+function sayHello() {
+  console.log(this);
+  return this;
+}
+
+sayHello();
+
+console.log(sayHello() === window);
+
+document.getElementById("cl").onclick = function () {
+  console.log(this);
+};
+
+let user6 = {
+  age: 24,
+  ageInDays: function () {
+    return this.age * 365;
+  },
+};
+
+console.log(user6.age);
+console.log(user6.ageInDays());
+
+//84
+/*
+  object
+    Creat object with create Method
+*/
+
+let user7 = {
+  age: 40,
+  doubleAge: function () {
+    return this.age * 2; //  زيس تعود علي اوبجيكت اللي بيكول الميثود 
+  },
+};
+console.log(user7);
+console.log(user7.age);
+console.log(user7.doubleAge());
+
+let obj = Object.create({}); // creae method :accpet object to use as a prototype وعايزه اوبجكت يستخدم كنموذج لانشاء الاوبجكت الجديد ده وممكن يكون فاضي
+obj.age = 100; // add a new property
+console.log(obj);
+
+let copyObj = Object.create(user7);
+copyObj.age = 30;
+console.log(copyObj);
+console.log(copyObj.age);
+console.log(copyObj.doubleAge());
+
+/*
+85
+  object 
+    create object with assign method
+*/
+
+let obj1 = {
+  prop1:1,
+  meth1:function(){
+    return this.prop1;
+  },
+};
+
+let obj2 = {
+  prop2:2,
+  meth2:function(){
+    return this.prop2;
+  },
+};
+
+let targetObject = {
+  prop1:100,
+  prop3:3,
+};
+
+let finalObject = Object.assign(targetObject,obj1 ,obj2); // target:- عاوزين اوبجيكت هننسخ ليه حاجات  + source :مجموعة فاليو هياخدها من اوبجيكت واحد او اكتر هيضيفها للتاريجيت 
+finalObject.prop1 = 100; // update value 
+finalObject.prop4 = 4;
+console.log(finalObject);
+
+let newObject = Object.assign({},obj1,{prop5: 5, prop6:6, }) // object فاضئ  ,  source من اوبجكت موجود قبل كده , properties ضفت كاي اوبجيكت عاديon the fly
+
+console.log(newObject)
+
+//This recipe, or method (Symbol.iterator), is like an instruction booklet for how to access each item. Once defined, it allows the JavaScript engine to interact with the data structure in a predictable and consistent way, ensuring that each item can be accessed in sequence. This is very useful for all kinds of operations that involve processing items one at a time, from displaying data on the screen to performing calculations on data elements.
