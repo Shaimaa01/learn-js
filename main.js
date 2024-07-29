@@ -460,7 +460,7 @@ console.log(Math.round((Math.trunc(b1) / Math.ceil(d1)).toFixed(2)));
 /*
 String Methods
   Access With Index
-  Access With ChartAt()
+  Access With ChartAt() 
   Length
   trim()
   toUpperCae()
@@ -2215,7 +2215,7 @@ console.log(user6.ageInDays());
 let user7 = {
   age: 40,
   doubleAge: function () {
-    return this.age * 2; //  زيس تعود علي اوبجيكت اللي بيكول الميثود 
+    return this.age * 2; //  زيس تعود علي اوبجيكت اللي بيكول الميثود
   },
 };
 console.log(user7);
@@ -2239,31 +2239,789 @@ console.log(copyObj.doubleAge());
 */
 
 let obj1 = {
-  prop1:1,
-  meth1:function(){
+  prop1: 1,
+  meth1: function () {
     return this.prop1;
   },
 };
 
 let obj2 = {
-  prop2:2,
-  meth2:function(){
+  prop2: 2,
+  meth2: function () {
     return this.prop2;
   },
 };
 
 let targetObject = {
-  prop1:100,
-  prop3:3,
+  prop1: 100,
+  prop3: 3,
 };
 
-let finalObject = Object.assign(targetObject,obj1 ,obj2); // target:- عاوزين اوبجيكت هننسخ ليه حاجات  + source :مجموعة فاليو هياخدها من اوبجيكت واحد او اكتر هيضيفها للتاريجيت 
-finalObject.prop1 = 100; // update value 
+let finalObject = Object.assign(targetObject, obj1, obj2); // target:- عاوزين اوبجيكت هننسخ ليه حاجات  + source :مجموعة فاليو هياخدها من اوبجيكت واحد او اكتر هيضيفها للتاريجيت
+finalObject.prop1 = 100; // update value
 finalObject.prop4 = 4;
 console.log(finalObject);
 
-let newObject = Object.assign({},obj1,{prop5: 5, prop6:6, }) // object فاضئ  ,  source من اوبجكت موجود قبل كده , properties ضفت كاي اوبجيكت عاديon the fly
+let newObject = Object.assign({}, obj1, { prop5: 5, prop6: 6 }); // object فاضئ  ,  source من اوبجكت موجود قبل كده , properties ضفت كاي اوبجيكت عاديon the fly
 
-console.log(newObject)
+console.log(newObject);
 
 //This recipe, or method (Symbol.iterator), is like an instruction booklet for how to access each item. Once defined, it allows the JavaScript engine to interact with the data structure in a predictable and consistent way, ensuring that each item can be accessed in sequence. This is very useful for all kinds of operations that involve processing items one at a time, from displaying data on the screen to performing calculations on data elements.
+
+//week 12 🥳
+
+/*
+  DOM
+    What Is DOM
+    DOM Selectors
+      Find Element By ID
+      Find Element By Tag Name
+      Find Elemnet By Class Name
+      Find Element By Css Selectors
+      Find Element By Collection
+        title 
+        body
+        images
+        forms 
+        links
+*/
+
+// Dom => means document object model
+
+let myIdElement = document.getElementById("my-div"); // it is the object has all our elemnets and methods propeties
+let myTagElements = document.getElementsByTagName("p"); // id is unique so just only one but tag there is alot كيس ولم ورايا
+let myClassElements = document.getElementsByClassName("my-span");
+// let myQueryElement = document.querySelector(".special");
+let myQueryElement = document.querySelector(".my-span"); //هيجيب اول عنصر بس في الكائن
+let myQueryAllElement = document.querySelectorAll(".my-span"); // هيجيب كل اللي يقابله
+
+console.log(myIdElement);
+console.log(myTagElements[0]);
+console.log(myClassElements);
+console.log(myQueryElement);
+console.log(myQueryAllElement);
+
+console.log(document.title);
+console.log(document.body);
+console.log(document.images);
+console.log(document.forms[0].one.value);
+console.log(document.links[0].href);
+
+/*
+  DOM [Get / set Elements Contenet And Attributes]
+    innertHTML
+    textContent
+    Change Attributes Directly
+    Change Attributes With Methods
+      getAttribute
+      SetAttribute
+
+  Search
+   innerText
+*/
+
+let myElement = document.querySelector(".js");
+
+console.log(myElement);
+console.log(myElement.innerHTML); // return text and html as it you use it if you want to keep the html as it
+console.log(myElement.textContent); // return text pure
+
+myElement.innerHTML = "Text From <span>Main.js</span> File";
+myElement.textContent = "Text From <span>Main.js</span> File";
+
+document.images[0].src = "";
+document.images[0].alt = "Alternate";
+document.images[0].title = "blue-Picture";
+document.images[0].id = "blue";
+document.images[0].className = "blue";
+
+let myLink = document.querySelector(".link");
+
+console.log(myLink.getAttribute("class"));
+console.log(myLink.getAttribute("href"));
+
+myLink.setAttribute("href", "https://twitter.com");
+myLink.setAttribute("title", "Twitter");
+
+/*
+  DOM [Check Attributes]
+    Element.attributes
+    Element.hasArribute
+    Element.hasArrtibute
+    Element.removeAttribute
+*/
+
+console.log(document.getElementsByTagName("p")[2].attributes);
+
+let myP = document.getElementsByTagName("p")[2];
+
+if (myP.hasAttribute("data-src")) {
+  if (myP.getAttribute("data-src") == "") {
+    myP.removeAttribute("data-src");
+  } else {
+    myP.setAttribute("data-src", "New Value");
+  }
+  console.log("Found");
+} else {
+  console.log("Not Found");
+}
+
+if (myP.hasAttributes()) {
+  console.log("P Has Attributes");
+}
+
+if (document.getElementsByTagName("div")[7].hasAttributes()) {
+  console.log("Has Attributes");
+} else {
+  console.log("Div Has No Attributes");
+}
+
+/*
+  DOM [Create Elements]
+    createElement
+    createComment
+    createTextNode
+    createAttribute
+    appendChild
+*/
+
+let myElement1 = document.createElement("div");
+let myAttr = document.createAttribute("data-custom");
+let myText = document.createTextNode("Prouct One");
+let myComment = document.createComment("This is Div");
+
+myElement1.className = "product";
+myElement1.setAttributeNode(myAttr);
+myElement1.setAttribute("data-test", "Testing");
+
+// Append Text To Element ذيل
+myElement1.appendChild(myText);
+
+// Append Comment To Element
+myElement1.appendChild(myComment);
+
+//Append Element to Body
+document.body.appendChild(myElement1);
+
+console.log(myElement1);
+
+/*
+  DOM [Create Elements]
+    practice product with Heading and Paragraph
+*/
+
+for (let i = 1; i <= 100; i++) {
+  let myElement2 = document.createElement("div");
+  let myHead3 = document.createElement("h3");
+  let myPara = document.createElement("p");
+
+  let myHead3Text = document.createTextNode("head3-Text" + i);
+  let myParaText = document.createTextNode("para-text");
+
+  myElement2.className = "product";
+  myElement2.appendChild(myHead3);
+  myHead3.appendChild(myHead3Text);
+  myElement2.appendChild(myPara);
+  myPara.appendChild(myParaText);
+
+  //css style
+  myElement2.style.cssText =
+    "color: #b7c3c9;background-image: url(https://blue-action.eu/fileadmin/user_upload/blueaction/carousel/TommyAndreassen-northern-lights-6862969_1920.jpg);background-size: cover;background-position: center;height: 200px;font-size: 25px;width: 400px;display: inline-block;margin:2%;padding:5px;border-radius:8px;box-shadow: rgb(0 0 0 / 40%) 4px 4px 12px 0px, rgba(76, 175, 80, 0.56) 1px 6px 20px 0px inset;";
+  document.body.appendChild(myElement2);
+}
+
+/*
+  DOM [Deal with Childerns]
+    children
+    childrenNodes
+    firstChild
+    lastChild
+    firstElementChild
+    lastElementChild
+*/
+
+let myElement3 = document.getElementsByTagName("div")[8];
+
+console.log(myElement3);
+console.log(myElement3.children); //retrun elemnts only no text no comment
+console.log(myElement3.children[0]);
+console.log(myElement3.childNodes); //return all even text comment every thing
+console.log(myElement3.childNodes[0]);
+
+console.log(myElement3.firstChild); //first text or comment first child whatever its type
+console.log(myElement3.lastChild); // last text
+
+console.log(myElement3.firstElementChild); //first tag
+console.log(myElement3.lastElementChild); //last tag
+
+/*
+  DOM [Events]
+    Use Events On HTML
+    Use Events On Js
+      onclick
+      oncontextmenu
+      onmousenter
+      onmouseleave
+
+      oneload
+      onscroll
+      onresize
+
+      onfocus
+      onblur
+      onsubmit
+*/
+
+let myBtn = document.getElementById("btn");
+
+myBtn.onclick = function () {
+  console.log("clicked by js");
+};
+
+myBtn.oncontextmenu = function () {
+  //click يمين
+  console.log("clicked by js");
+};
+
+myBtn.onmouseenter = function () {
+  // اول ما الماوس يلمس الزرار
+  console.log("clicked by js");
+};
+
+myBtn.onmouseleave = function () {
+  // اول اما تمشي وتسيب الزرار الكلمه هتظهر
+  console.log("clicked by js");
+};
+
+window.onscroll = function () {
+  console.log("scroll");
+};
+
+/*
+  DOM [Events]
+    Validate From Practice
+    Prevent Default
+*/
+
+let userInput = document.querySelector("[name='username']");
+let ageInput = document.querySelector("[name='age']");
+console.log(ageInput);
+
+document.forms[3].onsubmit = function (e) {
+  let userValid = false;
+  let ageValid = false;
+
+  if (userInput.value !== "" && userInput.value.length <= 10) {
+    userValid = true;
+  }
+
+  if (ageInput.value !== "") {
+    console.log("Valid");
+    ageValid = true;
+  }
+
+  if (userValid === false || ageValid === false) {
+    e.preventDefault();
+  }
+};
+
+document.links[3].onclick = function (event) {
+  console.log(event);
+  event.preventDefault(); //همنع السلوك الافتراضي
+};
+
+//week 13
+
+/*
+  DOM [Events simulation]
+    click
+    focus
+    blur
+*/
+
+let two = document.querySelector(".two");
+let one = document.querySelector(".one");
+
+window.onload = function () {
+  two.focus();
+};
+
+one.onblur = function () {
+  document.links[4].click();
+};
+
+/*
+  DOM [class List]
+    classList
+      length
+      contains
+      item(index)
+      add
+      remove
+      toggle
+*/
+
+let element = document.getElementById("my-div2");
+
+console.log(element.classList);
+console.log(typeof element);
+console.log(element.classList.contains("osama"));
+console.log(element.classList.contains("show")); // check if the class there or here or not🤔
+console.log(element.classList.item("0")); //give me the index i will give you class name
+
+// element.onclick = function () {
+//   element.classList.add("add-one", "add-two"); //add classes
+// };
+
+element.onclick = function () {
+  element.classList.remove("show"); //remove classes
+};
+
+element.onclick = function () {
+  element.classList.toggle("osama"); // بيشتغل اي حاجه لقيته هحذفه مالقتهوش هضيفه
+};
+// add or remove dependson the condtition
+
+/*
+  DOM [CSS]
+    style
+    cssText
+    removeProperty(propertyName) [Inline , Stylesheet]
+    setProperty(propertyName, value , priority)
+*/
+
+element.style.color = "red";
+element.style.fontWeight = "blod";
+
+element.style.cssText = "font-weight:bold; color:green; opacity:0.9";
+
+element.style.removeProperty("color");
+element.style.setProperty("font-size", "40px", "important");
+
+// console.log(document.styleSheets[0].cssRules) // let you to the future maybe we will know why this error 🐄
+
+// let styleSheet = document.styleSheets[0];
+// let rules = styleSheet.cssRules;
+
+// console.log(rules);
+
+/*
+  DOM [Deal With Elements]
+    before [Element || string] //قبل اوبعد بره العنصر 
+    after [Element || String]
+    append [Element || String]  بضيف الحاجه جوا العنصر 
+    prepend [Element || String]
+    remove
+*/
+
+let element3 = document.getElementById("my-div3");
+let createdP = document.createElement("p");
+
+element3.before("Hello from js");
+element3.after(createdP);
+
+element3.append("Hello from js"); // add in the end
+element3.append(createdP);
+
+element3.prepend("Hello from js first "); // add in the first
+
+element3.remove(); // remove the element form the document page
+
+/*
+  DOM [Traversing]
+    nextSibling
+    previousSibling
+    nextElementSibling
+    previousElementSibling
+    parentElement
+*/
+
+let span = document.getElementById("my-div4").children[1];
+
+console.log(span.nextSibling); //return the next brother whatever its text or element or comment
+console.log(span.nextElementSibling); //return the next element
+
+console.log(span.previousSibling);
+console.log(span.previousElementSibling);
+
+span.onclick = function () {
+  span.parentElement.style.opacity = "0";
+};
+
+/*
+  DOM [cloning]
+    cloneNode(Deep) Deep = mean i need to put true or false empty is mean false (it will take the only element with its attribute but not anything inside the element) true=> it mean take a reall copy for every thing 
+*/
+
+let myP1 = document.querySelectorAll("p")[4];
+let myDiv = document.querySelectorAll("div")[11];
+
+myP1.id = `${myP1.id}-clone`; // your id must be unique even you are a copy
+
+myDiv.appendChild(myP1);
+// شال البراجراف وحطه في قلب الدف when you use just appendShild
+// it just take a copy from the p not the real one . if you use clonNode() empty = faluse that mean it will take the elmenet and its attribute but it will not take what inside the element whatever text or span
+
+/*
+  DOM [Add Event Listener]
+    addEventListener
+    Use Wihtout On
+    Attach Multiple Events
+    Error Test
+
+  Search
+    Capture & Bubbling JavaScript
+    removeEventListener
+*/
+
+// myP1.onclick = function(){
+//   console.log("Message From onclick");
+// }
+
+// myP1.onclick = onee;
+// myP1.onclick = twoo; // line 2 will make overwirte on the first line and line 2 who will win and exctuted
+
+// function onee() {
+//   console.log("Message From onclick 1");
+// }
+
+// function twoo() {
+//   console.log("Message From onclick 2");
+// }
+
+// myP1.addEventListener("click", function () {
+//   console.log("Message From onclick 1 EventListnener");
+// });
+
+// myP1.addEventListener("click", twoo);
+// myP1.addEventListener("click", onee);
+
+// myP1.addEventListener("click", "string") // Erorr
+
+myP1.onclick = function () {
+  let newP = myP1.cloneNode(true);
+  newP.className = "clone";
+  document.body.appendChild(newP);
+};
+
+// let cloned = document.querySelector(".clone");
+
+// cloned.onclick =function(){
+//   console.log("Iam Cloned")
+// }     Error
+
+document.addEventListener("click", function (e) {
+  if (e.target.className === "clone") {
+    console.log(e.target); // معناها العنصر اللي انا دوست عليه
+  }
+});
+
+// challange 101 week 13
+
+// create header
+let myHeader = document.createElement("header");
+myHeader.className = "website-head";
+
+let myHeader_Div_One = document.createElement("Div");
+myHeader_Div_One.textContent = "Elzero";
+
+let myHeader_Div_Two = document.createElement("ul");
+
+// Create and append four li elements directly
+let listItem1 = document.createElement("li");
+listItem1.textContent = "Home";
+myHeader_Div_Two.appendChild(listItem1);
+
+let listItem2 = document.createElement("li");
+listItem2.textContent = "About";
+myHeader_Div_Two.appendChild(listItem2);
+
+let listItem3 = document.createElement("li");
+listItem3.textContent = "Services";
+myHeader_Div_Two.appendChild(listItem3);
+
+let listItem4 = document.createElement("li");
+listItem4.textContent = "Contact";
+myHeader_Div_Two.appendChild(listItem4);
+
+myHeader.appendChild(myHeader_Div_One);
+myHeader.appendChild(myHeader_Div_Two);
+document.body.appendChild(myHeader);
+
+// css style for the header
+myHeader.style.cssText =
+  "display:flex;justify-content:space-between;align-items:center;background-color:rgb(207 193 193);padding:20px;";
+
+myHeader_Div_One.style.cssText = "font-weight:bold;";
+
+myHeader_Div_Two.style.cssText = "display:flex;list-style:none;gap:10px;";
+
+// creat the main content
+let myContent = document.createElement("div");
+myContent.className = "content";
+for (i = 1; i <= 15; i++) {
+  let myProduct = document.createElement("div");
+  myProduct.className = "product";
+  myProduct.textContent = i;
+
+  let myProductSpan = document.createElement("span");
+  myProductSpan.textContent = "product" + i;
+
+  myProduct.appendChild(myProductSpan);
+  myContent.appendChild(myProduct);
+
+  //css style
+  myProduct.style.cssText =
+    "width: 30%; height: 82px; background-color: white; display: flex; flex-direction: column; justify-content: center; align-items: center;line-height: 1;font-size: 20px;font-weight: bold;";
+}
+
+document.body.appendChild(myContent);
+
+//css style for the content
+myContent.style.cssText =
+  "display: flex;justify-content: center;align-items: center;background-color: lightgray;gap: 10px;padding: 10px;flex-wrap:wrap";
+
+//create footer
+let myFooter = document.createElement("div");
+myFooter.className = "footer";
+myFooter.textContent = "copyright 2024";
+
+document.body.appendChild(myFooter);
+
+// css style for footer
+myFooter.style.cssText =
+  "background-color:rgb(207 193 193);font-size:19px;text-align:center;padding:20px;";
+
+// week 14 🎉🎉🎉🎉🎉🎉🎉🎉🎉
+//102
+/*
+  BOM {Browser Object Model}
+    Introduction
+      Window Object Is The Browser Window
+      Windo Contain The Document Object 
+      All Global Variables And Objects And Functions Are Members Of Winsow Object
+        Test Document And Console
+    What Can We DO With Window Object ?
+      Open Window
+      Close Window 
+      Move Window
+      Resize Window
+      Print Document
+      Run Code After Period Of Time Once Or More
+      Fully Control The URL
+      Fully Control The URL
+      Save Data Inside Browser To Use Later
+*/
+
+//103
+/*
+  BOM {Browser Object Model}
+    alert(Messgae) => Need No REsponse Only Ok Availabe
+    confirm(Messgae) => Need Response And Return A Boolean
+    Prompt(Message, Default Message) => Collect Data 
+*/
+
+// window.alert("Test"); //alert just give the user massage and that is it .
+// this.alert("Test");
+// alert("Test")
+
+// let confirmMsg = confirm("Are You Sure?");
+
+// console.log(confirmMsg);
+
+// if (confirmMsg === true) {
+//   console.log("item Deleted");
+// } else {
+//   console.log("Item Not Deletd");
+// }
+
+// let promptMsg = prompt("Good Day To You ?" , "write day with three charatet");
+
+// console.log(promptMsg);
+
+//104
+/*
+  BOM {Browser Object Model}
+    setTimeout (function, Timeout, Additional Params)
+    clearTimeout (Identifier)
+*/
+
+// setTimeout(function () {
+//   console.log("Msg");
+// }, 3000);
+
+// setTimeout(sayMsg, 3000);
+
+// function sayMsg() {
+//   console.log("I am Message");
+// }
+
+// setTimeout(sayMsg, 3000 , "osama" , "36");
+
+// function sayMsg(user , age) {
+//   console.log(`I am Message for ${user} His Age is : ${age}`);
+// }
+
+// let counter2 = setTimeout(sayMsg, 3000);
+// console.log(counter2);
+
+// function sayMsg() {
+//   console.log(`I am Message`);
+// }
+
+// let btu = document.querySelector(".clear.button");
+
+// btu.onclick = function () {
+//   clearTimeout(counter2);
+// };
+
+//105
+/*
+  BOM {Browser Object Model}
+    setInerval(Function, Millseconds , Additional Params)
+    clearIntervral(Identifier)
+*/
+
+// setInterval(function(){
+//   console.log(`Msg`);
+// },1000);
+
+// setInterval(sayMsg ,1000);
+
+// function sayMsg(){
+//   console.log(`Iam Message`);
+// };
+
+// setInterval(sayMsg, 1000 , "osama" , 38);
+
+// function sayMsg (user,age){
+//   console.log(`Iam Message For ${user} His Age Is:${age}`);
+// }
+
+let divFive = document.querySelector(".five");
+
+function countdown() {
+  divFive.innerHTML -= 1;
+  if (divFive.innerHTML === "0") {
+    clearInterval(counter3);
+  }
+}
+
+
+let counter3 = setInterval(countdown, 1000); //كل ثانيه ينفذ الكود مره او هيكرر الكود مره
+
+console.log(divFive.innerHTML)
+
+/*
+  BOM {Browser Object Model}
+    location object 
+      href Get / Set [URL || Hash || file || Mail]
+      Host 
+      Hash 
+      protocol
+      reload()
+      replace()
+      assign
+
+*/
+
+// console.log(location)
+// console.log(location.href);
+
+// location.href = "https://google.com"
+// location.href = "/#sec02"
+// location.href = "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+
+// console.log(location.host);
+// console.log(location.hostname);
+
+// console.log(location.protocol)
+
+// console.log(location.hash);
+
+// location.replace(); // deleted the current page from the histroy not like href do not delet it and let it in the histroy
+
+// location.assign(); // keep the page in the history do not remove it
+
+//107
+/*
+  BOM {Broswer Object Model}
+    open(URL [opt] , Window Name Or Target Attr [opt] , Win Features [opt] , History )
+    close() //you can only close the window that you open it useing open 🐄
+    Window Features
+      Width [Num]
+      height [Num]
+      left [Num]
+      top [Num]
+
+  Search
+    Window Open Window Features
+*/
+
+// setTimeout(function () {
+//   window.open("https://google.com", "_blank", "width=400,height=400,left=200,top=100");
+// }, 2000);
+
+//108
+/*
+  BOM {Broweser Object Model}
+    Histroy API
+      propetied
+        length
+      Mehods
+        back()
+        forward()
+        go(Delta) => Postion In Histroy
+
+  Search [For Advaced Knowledge]
+   pushState() + replaceState()
+*/
+
+console.log(history);
+
+//109
+/*
+  BOM {Browser Object Model}
+    stop()
+    print()
+    focus()
+    scrollTo(x ,y || Opetions) // بييدا من احداثيات معينه يعني بيدا من الزيرو 
+    scroll(x , y || Options)
+    scrollBY(x , y || Options) //يبدا من مكان مانتا واقف وبيدا يتحرك
+*/
+
+// let myNewWindow = window.open("https://google.com" , "" , "width=500,height=500")
+
+// window.scrollTo({left:500,top:200,behavior:"smooth"})
+
+/*
+  DOM [Browser Object Model]
+    practice => Scroll To Top
+    scrollX [Alias = pageXOffest]
+    scrollY [Alias = pageXOffest]
+*/
+
+// console.log(window.scrollX === window.pageXOffset)
+
+let upButton = document.querySelector(".up.button")
+console.log(upButton)
+
+ upButton.style.cssText =
+  "background-color:red;border:none;color:white;font-weight:bold;padding:6px;border-radius:4px;position:fixed;bottom:20px;right:20px;display:none;cursor:pointer;";
+
+window.onscroll = function (){
+  if(window.scrollY >= 600){
+    // console.log(`scrolling Y value Is ${window.scrollY}`)
+    upButton.style.display = "block";
+  }else{
+    upButton.style.display = "none";
+  }
+}
+
+upButton.onclick = function (){
+  window.scrollTo({
+    left:0,
+    top:0,
+    behavior:"smooth",
+  })
+}
