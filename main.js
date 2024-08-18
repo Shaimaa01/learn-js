@@ -2503,19 +2503,19 @@ window.onscroll = function () {
     Prevent Default
 */
 
-let userInput = document.querySelector("[name='username']");
-let ageInput = document.querySelector("[name='age']");
-console.log(ageInput);
+let userinput = document.querySelector("[name='username']");
+let ageinput = document.querySelector("[name='age']");
+console.log(ageinput);
 
 document.forms[3].onsubmit = function (e) {
   let userValid = false;
   let ageValid = false;
 
-  if (userInput.value !== "" && userInput.value.length <= 10) {
+  if (userinput.value !== "" && userinput.value.length <= 10) {
     userValid = true;
   }
 
-  if (ageInput.value !== "") {
+  if (ageinput.value !== "") {
     console.log("Valid");
     ageValid = true;
   }
@@ -2907,10 +2907,9 @@ function countdown() {
   }
 }
 
-
 let counter3 = setInterval(countdown, 1000); //كل ثانيه ينفذ الكود مره او هيكرر الكود مره
 
-console.log(divFive.innerHTML)
+console.log(divFive.innerHTML);
 
 /*
   BOM {Browser Object Model}
@@ -3003,25 +3002,125 @@ console.log(history);
 
 // console.log(window.scrollX === window.pageXOffset)
 
-let upButton = document.querySelector(".up.button")
-console.log(upButton)
+let upButton = document.querySelector(".up.button");
+console.log(upButton);
 
- upButton.style.cssText =
+upButton.style.cssText =
   "background-color:red;border:none;color:white;font-weight:bold;padding:6px;border-radius:4px;position:fixed;bottom:20px;right:20px;display:none;cursor:pointer;";
 
-window.onscroll = function (){
-  if(window.scrollY >= 600){
+window.onscroll = function () {
+  if (window.scrollY >= 600) {
     // console.log(`scrolling Y value Is ${window.scrollY}`)
     upButton.style.display = "block";
-  }else{
+  } else {
     upButton.style.display = "none";
   }
+};
+
+upButton.onclick = function () {
+  window.scrollTo({
+    left: 0,
+    top: 0,
+    behavior: "smooth",
+  });
+};
+
+// week 15
+/*
+  BOM {Browser object Model}
+  Local Storage
+    setItem
+    getItem
+    removeItem
+    clear
+    Key
+
+  Info
+    NO Expiration Time
+    HTTP And HITPS
+    private Tab
+*/
+
+// Set
+// window.localStorage.setItem("color", "gray");
+window.localStorage.fontWeight = "bold";
+window.localStorage["fontSize"] = "20px";
+
+//Get
+console.log(window.localStorage.getItem("color"));
+console.log(window.localStorage.color);
+console.log(window.localStorage["color"]);
+
+// Remove One
+// window.localStorage.removeItem("color")
+
+// Remove All
+// window.localStorage.clear()
+
+// Get Key
+console.log(window.localStorage.key(0));
+
+//Set Color In Page
+// document.body.style.backgroundColor = window.localStorage.getItem("color")
+
+console.log(window.localStorage);
+console.log(typeof window.localStorage);
+
+// 112
+
+let lis = document.querySelectorAll(".ulcolor li");
+let exp = document.querySelector(".experiment");
+
+// window.localStorage.clear();
+
+if (window.localStorage.getItem("color")) {
+  // if there is color in local Storage
+  // [1] Add Color To Div
+  exp.style.backgroundColor = window.localStorage.getItem("color");
+  // [2] Remove Active Class From All Lis
+  lis.forEach((li) => {
+    li.classList.remove("active");
+    // [3] Add Active Class To Current Color
+    document
+      .querySelector(`[data-color="${window.localStorage.getItem("color")}"]`)
+      .classList.add("active");
+  });
 }
 
-upButton.onclick = function (){
-  window.scrollTo({
-    left:0,
-    top:0,
-    behavior:"smooth",
-  })
-}
+lis.forEach((li) => {
+  li.addEventListener("click", (e) => {
+    // console.log(e.currentTarget.dataset.color);
+
+    // Add Acive Class To Current Element
+    e.currentTarget.classList.add("acitve");
+    // Add Current Color To Local Storage
+    window.localStorage.setItem("color", e.currentTarget.dataset.color);
+    // Change Div Backgorund Color
+    exp.style.backgroundColor = e.currentTarget.dataset.color;
+  });
+});
+
+// 113
+
+/*
+  BOM {Browser Object Model}
+  Session Storage
+    setItem
+    getItem
+    removeItem
+    clear
+    key
+
+  Info
+    New Tab = New Session
+    Duplicate Tab = Copy Session
+    New Tab With Same Url = New Session
+*/
+
+window.localStorage.setItem("color", "red");
+window.sessionStorage.setItem("color", "blue");
+
+document.querySelector(".name.section").onblur = function () {
+  window.localStorage.setItem("input-name", this.value);
+};
+
